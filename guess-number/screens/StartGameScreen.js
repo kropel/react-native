@@ -9,6 +9,8 @@ import {
   Alert,
 } from 'react-native';
 
+import BodyText from '../components/BodyText';
+
 import { Colors } from '../constants/colors';
 
 import Card from '../components/Card';
@@ -32,9 +34,11 @@ const StartGameScreen = (props) => {
   const confirmInputHandler = () => {
     const chosenNumber = parseInt(enteredValue);
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
-      Alert.alert('Invalid number!', 'Number has to be number between 1 and 99.', [
-        { text: 'Okay', style: 'destructive', onPress: resetInputHandler },
-      ]);
+      Alert.alert(
+        'Invalid number!',
+        'Number has to be number between 1 and 99.',
+        [{ text: 'Okay', style: 'destructive', onPress: resetInputHandler }]
+      );
       return;
     }
 
@@ -49,10 +53,10 @@ const StartGameScreen = (props) => {
   if (confirmed) {
     confirmedOutput = (
       <Card style={styles.summaryContainer}>
-        <Text>You selected</Text>
+        <BodyText>You selected</BodyText>
         <NumberContainer>{selectedValue}</NumberContainer>
         <Button
-          title="START GAME"
+          title='START GAME'
           onPress={() => {
             props.onStartGame(selectedValue);
           }}
@@ -70,24 +74,30 @@ const StartGameScreen = (props) => {
       <View style={styles.screen}>
         <Text style={styles.title}>Start a New Game!</Text>
         <Card style={styles.inputContainer}>
-          <Text>Select a Number</Text>
+          <BodyText style={{ fontFamily: 'open-sans' }}>
+            Select a Number
+          </BodyText>
           <Input
             style={styles.input}
             blurOnSubmit
-            autoCapitalize="none"
+            autoCapitalize='none'
             autoCorrect={false}
-            keyboardType="number-pad"
+            keyboardType='number-pad'
             maxLength={2}
             value={enteredValue}
             onChangeText={inputHandler}
           />
           <View style={styles.buttonContainer}>
             <View style={styles.button}>
-              <Button title="Reset" onPress={resetInputHandler} color={Colors.accent} />
+              <Button
+                title='Reset'
+                onPress={resetInputHandler}
+                color={Colors.accent}
+              />
             </View>
             <View style={styles.button}>
               <Button
-                title="Confirm"
+                title='Confirm'
                 onPress={confirmInputHandler}
                 color={Colors.primary}
               />
