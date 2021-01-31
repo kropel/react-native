@@ -10,7 +10,7 @@ const BodyText = (props) => {
 };
 
 const styles = StyleSheet.create({
-  body: { fontFamily: 'open-sans-bold' },
+  body: { fontFamily: 'open-sans' },
 });
 
 export default BodyText;
